@@ -3,7 +3,7 @@ var SNAKE_COLORS = ['#ba000d', '#9c27b0', '#3f51b5', '#4caf50', '#ffc107']
 function drawFood() {
   foods.forEach(f => {
     fill('#d4e157')
-    rect(f.x, f.y, GRID_SIZE, GRID_SIZE)
+    image(SPRITE_FOOD[f.type], f.x, f.y, GRID_SIZE, GRID_SIZE)
   })
 }
 

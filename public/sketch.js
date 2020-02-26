@@ -5,7 +5,16 @@ var foods = [];
 var players = {}
 var isGameover = false
 
+var SPRITE_FOOD;
+
 function setup() {
+  // load assets
+  SPRITE_FOOD = [
+    loadImage('/assets/apple.png'),
+    loadImage('/assets/star.png'),
+    loadImage('/assets/clock.png'),
+  ]
+
   const name = prompt('Please Enter Your name:', 'Anonymous'+Math.floor(Math.random() * 30000))
   socket.emit('join', name)
   createCanvas(MAP_WIDTH, MAP_HEIGHT)

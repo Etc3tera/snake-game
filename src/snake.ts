@@ -1,5 +1,5 @@
 import Vector from './vector'
-import { GRID_SIZE, DIRECTION_UP, DIRECTION_RIGHT, DIRECTION_DOWN, DIRECTION_LEFT, MAP_WIDTH, MAP_HEIGHT } from './constant'
+import { GRID_SIZE, DIRECTION_UP, DIRECTION_RIGHT, DIRECTION_DOWN, DIRECTION_LEFT, MAP_WIDTH, MAP_HEIGHT, NUM_COLS, NUM_ROWS } from './constant'
 
 export default class Snake {
   x: number
@@ -7,9 +7,9 @@ export default class Snake {
   xspeed: number
   yspeed: number
   heading: number
-  isDeath: boolean
   total: number
   tails: Vector[]
+  canMove: boolean
 
   constructor(startX: number, startY: number) {
     this.tails = []
@@ -19,9 +19,13 @@ export default class Snake {
     this.yspeed = 0
     this.heading = DIRECTION_RIGHT
     this.total = 0
+    this.canMove = true
   }
 
   update() {
+    if (!this.canMove)
+      return
+
     if (this.total === this.tails.length) {
       for(var i = 0; i < this.tails.length - 1; i++) {
         this.tails[i] = this.tails[i+1]
@@ -35,8 +39,14 @@ export default class Snake {
     // this.xspeed = 0
     // this.yspeed = 0
 
-    if (this.x < 0 || this.x >= MAP_WIDTH || this.y < 0 || this.y >= MAP_HEIGHT) 
-      this.isDeath = true
+    if (this.x < 0)
+      this.x = (NUM_COLS - 1) * GRID_SIZE
+    if (this.x > MAP_WIDTH)
+      this.x = 0
+    if (this.y < 0)
+      this.y = (NUM_ROWS - 1) * GRID_SIZE
+    if (this.y > MAP_HEIGHT)
+      this.y = 0
   }
 
   turn (direction: number) {
@@ -59,11 +69,11 @@ export default class Snake {
     }
   }
 
-  // show = function() {
-  //   fill(255,255,255)
-  //   for(var i = 0; i < this.tails.length; i++) {
-  //     rect(this.tails[i].x, this.tails[i].y, GRID_SIZE, GRID_SIZE)
-  //   }
-  //   rect(this.x, this.y, GRID_SIZE, GRID_SIZE)
-  // }
+  stop() {
+    this.canMove = false
+  }
+
+  resume() {
+    this.canMove = true
+  }
 }
