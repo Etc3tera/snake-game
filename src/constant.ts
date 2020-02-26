@@ -1,0 +1,10 @@
+export const MAP_WIDTH = 800
+export const MAP_HEIGHT = 600
+export const GRID_SIZE = 10
+export const NUM_ROWS = 80
+export const NUM_COLS = 60
+export const DIRECTION_UP = 0;
+export const DIRECTION_RIGHT = 1;
+export const DIRECTION_DOWN = 2;
+export const DIRECTION_LEFT = 3;
+export const MAX_FOOD = 8;

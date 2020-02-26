@@ -1,0 +1,31 @@
+.scoreboard {
+    min-height: 32px;
+}
+
+.score {
+    display: inline-block;
+    height: 24px;
+    padding: 4px;
+}
+
+.bg-0 {
+    background-color: #ba000d;
+    color: #fff;
+}
+.bg-1 {
+    background-color: #9c27b0;
+    color: #fff;
+}
+.bg-2 {
+    background-color: #3f51b5;
+    color: #fff;
+}
+.bg-3 {
+    background-color: #4caf50;
+    color: #fff;
+}
+.bg-4 {
+    background-color: #ffc107;
+    color: #000;
+}
+
